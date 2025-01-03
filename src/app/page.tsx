@@ -6,7 +6,9 @@ export default function Home() {
     <main className="min-h-screen p-8">
       {/* Hero Section */}
       <section className="text-center py-20">
-        <h1 className="text-5xl font-bold mb-6">Mohit's Next JS Playground</h1>
+        <h1 className="text-5xl font-bold mb-6">
+          Mohit&apos;s Next JS Playground
+        </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           A collection of reusable components and features for your Next.js
           projects
