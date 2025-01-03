@@ -5,9 +5,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface FeaturePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 const featureComponents = {
@@ -15,13 +16,17 @@ const featureComponents = {
   // Add more feature components here as they're created
 };
 
-export default function FeaturePage({ params }: FeaturePageProps) {
-  const feature = features.find((f) => f.id === params.id);
+export default async function FeaturePage({
+  params,
+  searchParams,
+}: FeaturePageProps) {
+  const { id } = await params;
+  const feature = features.find((f) => f.id === id);
 
   if (!feature) notFound();
 
   const FeatureComponent =
-    featureComponents[params.id as keyof typeof featureComponents];
+    featureComponents[id as keyof typeof featureComponents];
 
   if (!FeatureComponent) notFound();
 
